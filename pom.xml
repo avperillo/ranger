@@ -1265,6 +1265,9 @@
                         <exclude>**/docs/src/site/resources/override-banner.js</exclude>
                         <exclude>**/docs/src/site/resources/smooth-scroll.js</exclude>
                         <exclude>**/importRole/*.json</exclude>
+                        <exclude>.vscode/**</exclude>
+                        <exclude>shortcuts.md</exclude>
+                        <exclude>shortcuts_curl.md</exclude>
                     </excludes>
                 </configuration>
             </plugin>

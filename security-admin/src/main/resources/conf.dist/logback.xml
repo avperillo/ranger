@@ -111,7 +111,7 @@
   <logger name="jdbc.sqlonly" additivity="false" level="error">
     <appender-ref ref="sql_appender"/>
   </logger>
-  <root level="warn">
+  <root level="debug">
     <appender-ref ref="xa_log_appender"/>
   </root>
 </configuration>

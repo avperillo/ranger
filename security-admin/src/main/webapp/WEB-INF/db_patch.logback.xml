@@ -62,7 +62,7 @@
     <appender-ref ref="xa_log_appender"/>
   </logger>
 
-  <root level="warn">
+  <root level="info">
     <appender-ref ref="xa_log_appender"/>
   </root>
 </configuration>
