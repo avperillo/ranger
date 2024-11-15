@@ -15,7 +15,7 @@
 # limitations under the License.
 
 ARG UBUNTU_VERSION
-FROM ubuntu:${UBUNTU_VERSION}
+FROM ubuntu:20.04
 
 ARG TARGETARCH
 ARG RANGER_BASE_JAVA_VERSION

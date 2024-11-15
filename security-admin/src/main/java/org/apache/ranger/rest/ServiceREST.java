@@ -2103,9 +2103,9 @@ public class ServiceREST {
         return ret;
     }
 
-	@GET
-	@Path("/policies/downloadExcel")
-	@Produces("application/ms-excel")
+//	@GET
+//	@Path("/policies/downloadExcel")
+//	@Produces("application/ms-excel")
 	public void getPoliciesInExcel(@Context HttpServletRequest request,
 			@Context HttpServletResponse response) {
 
@@ -2150,9 +2150,9 @@ public class ServiceREST {
 		}
 	}
 
-	@GET
-	@Path("/policies/csv")
-	@Produces("text/csv")
+//	@GET
+//	@Path("/policies/csv")
+//	@Produces("text/csv")
 	public void getPoliciesInCsv(@Context HttpServletRequest request, @Context HttpServletResponse response) throws IOException {
 
 		if (LOG.isDebugEnabled()) {
@@ -2197,9 +2197,9 @@ public class ServiceREST {
 		}
 	}
 
-	@GET
-	@Path("/policies/exportJson")
-	@Produces("text/json")
+//	@GET
+//	@Path("/policies/exportJson")
+//	@Produces("text/json")
 	public void getPoliciesInJson(@Context HttpServletRequest request,
 			@Context HttpServletResponse response,
 			@QueryParam("checkPoliciesExists") Boolean checkPoliciesExists) {
