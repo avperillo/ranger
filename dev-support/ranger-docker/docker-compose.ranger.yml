@@ -17,6 +17,7 @@ services:
       - ranger
     ports:
       - "6080:6080"
+      - "16080:16080"
     depends_on:
       ranger-zk:
         condition: service_started
@@ -24,12 +25,15 @@ services:
         condition: service_healthy
       ranger-solr:
         condition: service_started
-      ranger-elasticsearch:
-        condition: service_started
+#      ranger-elasticsearch:
+#        condition: service_started
     environment:
       - RANGER_VERSION
       - RANGER_DB_TYPE
       - DEBUG_ADMIN=${DEBUG_ADMIN:-false}
+      - REMOTE_JVM_DEBUG=${REMOTE_JVM_DEBUG:-false}
+    volumes:
+      - /var/log/ranger:/var/log/ranger
     command:
       - /home/ranger/scripts/ranger.sh
 
@@ -62,23 +66,23 @@ services:
     ports:
       - "2181:2181"
 
-#  ranger-solr:
-#    build:
-#      context: .
-#      dockerfile: Dockerfile.ranger-solr
-#      args:
-#        - SOLR_VERSION=${SOLR_VERSION}
-#    image: ranger-solr
-#    container_name: ranger-solr
-#    hostname: ranger-solr.example.com
-#    networks:
-#      - ranger
-#    ports:
-#      - "8983:8983"
-#    command:
-#      - solr-precreate
-#      - ranger_audits
-#      - /opt/solr/server/solr/configsets/ranger_audits/
+  ranger-solr:
+    build:
+      context: .
+      dockerfile: Dockerfile.ranger-solr
+      args:
+        - SOLR_VERSION=${SOLR_VERSION}
+    image: ranger-solr
+    container_name: ranger-solr
+    hostname: ranger-solr.example.com
+    networks:
+      - ranger
+    ports:
+      - "8983:8983"
+    command:
+      - solr-precreate
+      - ranger_audits
+      - /opt/solr/server/solr/configsets/ranger_audits/
 
 volumes:
   esdata:
