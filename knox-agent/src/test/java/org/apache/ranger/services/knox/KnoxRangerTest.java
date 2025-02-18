@@ -49,7 +49,7 @@ public class KnoxRangerTest {
 
     @BeforeClass
     public static void setupSuite() throws Exception {
-        // ToDo: advice this solution
+        // ToDo Alex: advice this solution
         Assume.assumeTrue("Test ignored on JRE >= 17", isJavaVersionBelow17(System.getProperty("java.version")));
 
         driver.setResourceBase(KnoxRangerTest.class);

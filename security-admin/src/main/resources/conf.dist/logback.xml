@@ -99,6 +99,40 @@
   <logger name="org.springframework" additivity="false" level="warn">
     <appender-ref ref="patch_logger"/>
   </logger>
+<!--  <logger name="org.springframework.transaction" additivity="false" level="debug">-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+<!--  <logger name="org.springframework.orm.jpa" additivity="false" level="debug">-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+  <!-- Habilitar logs de Spring Security -->
+<!--  <logger name="org.springframework.security" level="DEBUG">-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+<!--  <logger name="org.springframework.security.web.access" level="TRACE" >-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+<!--  <logger name="org.springframework.security.web.context" level="TRACE" >-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+<!--  <logger name="org.springframework.security.web.authentication" level="TRACE" >-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+  <logger name="org.springframework.security" level="TRACE">
+    <appender-ref ref="xa_log_appender"/>
+  </logger>
+<!--  <logger name="org.springframework.security.web.context.SecurityContextHolderFilter" level="TRACE">-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+<!--  <logger name="org.springframework.security.web.context.DelegatingSecurityContextRepository" level="TRACE">-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+<!--  <logger name="org.springframework.security.web.context.HttpSessionSecurityContextRepository" level="TRACE">-->
+<!--    <appender-ref ref="xa_log_appender"/>-->
+<!--  </logger>-->
+    <logger name="org.glassfish.jersey" level="debug">
+      <appender-ref ref="xa_log_appender"/>
+    </logger>
   <logger name="jdbc.sqltiming" additivity="false" level="warn">
     <appender-ref ref="sql_appender"/>
   </logger>

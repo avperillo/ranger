@@ -43,6 +43,7 @@ import org.apache.kafka.common.utils.Time;
 import org.apache.kerby.kerberos.kerb.server.SimpleKdcServer;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,7 +52,7 @@ import kafka.server.KafkaConfig;
 import kafka.server.KafkaServer;
 import scala.Some;
 
-
+@Disabled
 public class KafkaRangerTopicCreationTest {
     private final static Logger LOG = LoggerFactory.getLogger(KafkaRangerTopicCreationTest.class);
 

@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ranger-tagsync:
+    environment:
+      - REMOTE_JVM_DEBUG=${REMOTE_JVM_DEBUG:-false}
+      - REMOTE_JVM_DEBUG_PORT_TAGSYNC=${REMOTE_JVM_DEBUG_PORT_TAGSYNC}
+    ports:
+      - "${REMOTE_JVM_DEBUG_PORT_TAGSYNC}:5005"
+    volumes:
+      - /var/log/ranger/tagsync:/var/log/ranger/tagsync

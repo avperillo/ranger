@@ -50,6 +50,9 @@ if [ -z "${UNIX_TAGSYNC_USER}" ]; then
 fi
 
 JAVA_OPTS=" ${JAVA_OPTS} -XX:MetaspaceSize=100m -XX:MaxMetaspaceSize=200m -Xmx${ranger_tagsync_max_heap_size} -Xms1g "
+if [[ "$REMOTE_JVM_DEBUG" == "true" ]]; then
+  JAVA_OPTS=" ${JAVA_OPTS} -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Djava.net.preferIPv4Stack=true"
+fi
 
 if [ "${action}" == "START" ]; then
 
@@ -107,6 +110,11 @@ if [ "${action}" == "START" ]; then
                 chown ${UNIX_TAGSYNC_USER} ${pidf}
 		chmod 660 ${pidf}
 		pid=`cat $pidf`
+		echo "REMOTE_JVM_DEBUG: ${REMOTE_JVM_DEBUG}"
+    echo "JAVA_OPTS: ${JAVA_OPTS}"
+    if [[ "$REMOTE_JVM_DEBUG" == "true" ]]; then
+      echo "Remote JVM debug on port 5005"
+    fi
 		echo "Apache Ranger Tagsync Service with pid ${pid} has started."
 	else
 		echo "Apache Ranger Tagsync Service failed to start!"

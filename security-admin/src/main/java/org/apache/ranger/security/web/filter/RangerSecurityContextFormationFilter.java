@@ -62,9 +62,6 @@ public class RangerSecurityContextFormationFilter extends GenericFilterBean {
 	@Autowired
 	HTTPUtil httpUtil;
 
-	 @Autowired
-    XUserMgr xUserMgr;
-
 	@Autowired
 	GUIDUtil guidUtil;
 
@@ -126,7 +123,7 @@ public class RangerSecurityContextFormationFilter extends GenericFilterBean {
 				RangerContextHolder.setSecurityContext(context);
 				int authType = getAuthType(httpRequest);
 
-				// ToDo: re-check this fix to transaction problem
+				// ToDo alex: re-check this fix to transaction problem
 				AtomicReference<UserSessionBase> userSession = new AtomicReference<>();
 				transactionTemplate.execute(status -> {
 					userSession.set(sessionMgr.processSuccessLogin(

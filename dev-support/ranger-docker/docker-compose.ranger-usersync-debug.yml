@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ranger-usersync:
+    environment:
+      - REMOTE_JVM_DEBUG=${REMOTE_JVM_DEBUG:-false}
+      - REMOVE_JVM_DEBUG_PORT_USERSYNC=${REMOTE_JVM_DEBUG_PORT_USERSYNC}
+    ports:
+      - "${REMOTE_JVM_DEBUG_PORT_USERSYNC}:5005"
+    volumes:
+      - /var/log/ranger/usersync:/var/log/ranger/usersync

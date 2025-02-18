@@ -51,7 +51,7 @@ import org.junit.Ignore;
  * with the tag called "TmpdirTag". A "hdfs_path" entity was created in Apache Atlas + then associated with the "TmpdirTag". This was
  * then imported into Ranger using the TagSyncService. The policies were then downloaded locally and saved for testing off-line.
  */
-// ToDo: advice this solution
+// ToDo Alex: advice this solution
 @Ignore("org.apache.hadoop.http.HttpServer2 uses Jetty 9's ServletHolder which is not compatible with Jakarta (HttpServer2.java:236)")
 public class HDFSRangerTest {
 

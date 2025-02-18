@@ -106,9 +106,6 @@
                     <include>org.apache.httpcomponents:httpclient:jar:${kms.httpcomponents.httpclient.version}</include>
                     <include>org.noggit:noggit:jar:${noggit.version}</include>
                     <include>org.apache.hadoop:hadoop-hdfs:jar:${hadoop.version}</include>
-                    <include>com.fasterxml.jackson.core:jackson-annotations:jar:${fasterxml.jackson.version}</include>
-                    <include>com.fasterxml.jackson.core:jackson-core:jar:${fasterxml.jackson.version}</include>
-                    <include>com.fasterxml.jackson.core:jackson-databind:jar:${fasterxml.jackson.databind.version}</include>
                     <include>com.fasterxml.jackson.jaxrs:jackson-jaxrs-base:jar:${fasterxml.jackson.version}</include>
                     <include>com.fasterxml.jackson.module:jackson-module-jaxb-annotations:jar:${fasterxml.jackson.version}</include>
                     <include>com.fasterxml.jackson.module:jackson-module-jakarta-xmlbind-annotations:jar:${fasterxml.jackson.version}</include>

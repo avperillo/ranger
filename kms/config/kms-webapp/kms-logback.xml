@@ -65,7 +65,7 @@
     <appender-ref ref="kms-metric"/>
   </logger>
   <logger name="org.apache.ranger" level="INFO"/>
-  <root level="WARN">
+  <root level="DEBUG">
     <appender-ref ref="kms"/>
   </root>
 </configuration>

@@ -57,6 +57,10 @@ fi
 JAVA_OPTS=" ${JAVA_OPTS} -XX:MetaspaceSize=100m -XX:MaxMetaspaceSize=200m -Xmx${ranger_admin_max_heap_size} -Xms1g -Xloggc:${RANGER_ADMIN_LOG_DIR}/gc-worker.log -verbose:gc -XX:+PrintGCDetails"
 if [[ ${JAVA_OPTS} != *"-Duser.timezone"* ]] ;then  export JAVA_OPTS=" ${JAVA_OPTS} -Duser.timezone=UTC" ;fi
 
+if [ "$REMOTE_JVM_DEBUG" = "true" ]; then
+  JAVA_OPTS=" ${JAVA_OPTS} -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Djava.net.preferIPv4Stack=true"
+fi
+
 if [ -z "${RANGER_ADMIN_LOGBACK_CONF_FILE}" ]
 then
 	RANGER_ADMIN_LOGBACK_CONF_FILE=${XAPOLICYMGR_EWS_DIR}/webapp/WEB-INF/classes/conf/logback.xml
@@ -101,6 +105,10 @@ start() {
                 chown ${RANGER_USER} ${pidf}
 		chmod 660 ${pidf}
 		pid=`cat $pidf`
+		echo "JAVA_OPTS: ${JAVA_OPTS}"
+		if [[ "$REMOTE_JVM_DEBUG" == "true" ]]; then
+      echo "Remote JVM debug on port 5005"
+    fi
 		echo "Apache Ranger Admin Service with pid ${pid} has started."
 	else
 		echo "Apache Ranger Admin Service failed to start!"

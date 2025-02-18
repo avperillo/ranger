@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ranger-kms:
+    environment:
+      - REMOTE_JVM_DEBUG=${REMOTE_JVM_DEBUG:-false}
+      - REMOTE_JVM_DEBUG_PORT_KMS=${REMOTE_JVM_DEBUG_PORT_KMS}
+    ports:
+      - "${REMOTE_JVM_DEBUG_PORT_KMS}:5005"
+    volumes:
+      - /var/log/ranger/kms:/var/log/ranger/kms

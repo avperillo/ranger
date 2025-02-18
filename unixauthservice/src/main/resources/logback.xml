@@ -31,7 +31,7 @@
       <cleanHistoryOnStart>true</cleanHistoryOnStart>
     </rollingPolicy>
   </appender>
-  <root level="info">
+  <root level="debug">
     <appender-ref ref="logFile"/>
   </root>
 </configuration>

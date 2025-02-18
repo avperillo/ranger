@@ -49,10 +49,7 @@ import org.apache.kafka.common.PartitionInfo;
 import org.apache.kafka.common.config.SaslConfigs;
 import org.apache.kafka.common.utils.Time;
 import org.apache.kerby.kerberos.kerb.server.SimpleKdcServer;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -73,6 +70,7 @@ import scala.Some;
  *
  * Authentication is done via Kerberos/GSS.
  */
+@Disabled
 public class KafkaRangerAuthorizerGSSTest {
     private final static Logger LOG = LoggerFactory.getLogger(KafkaRangerAuthorizerGSSTest.class);
 

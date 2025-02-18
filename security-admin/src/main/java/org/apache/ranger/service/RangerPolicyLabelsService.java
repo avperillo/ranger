@@ -34,9 +34,6 @@ import org.springframework.stereotype.Service;
 public class RangerPolicyLabelsService<T extends XXPolicyLabel, V extends RangerPolicy>
 		extends RangerBaseModelService<T, V> {
 
-	@Autowired
-	RangerAuditFields<?> rangerAuditFields;
-
 	public RangerPolicyLabelsService() {
 		super();
 		searchFields.add(

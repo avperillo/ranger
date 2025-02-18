@@ -29,7 +29,7 @@
   <logger name="org.apache.hadoop.conf" level="ERROR"/>
   <logger name="org.apache.hadoop.crytpo.key.kms.server" level="ALL"/>
   <logger name="org.apache.hadoop.util.NativeCodeLoader" level="OFF"/>
-  <root level="WARN">
+  <root level="debug">
     <appender-ref ref="stdout"/>
   </root>
 </configuration>

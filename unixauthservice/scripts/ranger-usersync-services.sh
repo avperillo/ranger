@@ -80,6 +80,9 @@ INSTALL_ARGS="${cdir}/install.properties"
 RANGER_BASE_DIR=$(getInstallProperty 'ranger_base_dir')
 
 JAVA_OPTS=" ${JAVA_OPTS} -XX:MetaspaceSize=100m -XX:MaxMetaspaceSize=200m -Xmx${ranger_usersync_max_heap_size} -Xms1g "
+if [[ "$REMOTE_JVM_DEBUG" == "true" ]]; then
+  JAVA_OPTS=" ${JAVA_OPTS} -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Djava.net.preferIPv4Stack=true"
+fi
 
 if [ "${action}" == "START" ]; then
 
@@ -115,14 +118,19 @@ if [ "${action}" == "START" ]; then
 	SLEEP_TIME_AFTER_START=5
 	nohup java -Dproc_rangerusersync -Djdk.tls.ephemeralDHKeySize=2048 -Dlogback.configurationFile=file:${USERSYNC_CONF_DIR}/logback.xml ${JAVA_OPTS} -Duser=${USER} -Dhostname=${HOSTNAME} -Dlogdir="${logdir}" -cp "${cp}" org.apache.ranger.authentication.UnixAuthenticationService -enableUnixAuth > ${logdir}/auth.log 2>&1 &
 	VALUE_OF_PID=$!
-    echo "Starting Apache Ranger Usersync Service"
-    sleep $SLEEP_TIME_AFTER_START
-    if ps -p $VALUE_OF_PID > /dev/null
-    then
+  echo "Starting Apache Ranger Usersync Service"
+  sleep $SLEEP_TIME_AFTER_START
+  if ps -p $VALUE_OF_PID > /dev/null
+  then
 		echo $VALUE_OF_PID > ${pidf}
                 chown ${UNIX_USERSYNC_USER} ${pidf}
 		chmod 660 ${pidf}
 		pid=`cat $pidf`
+		echo "REMOTE_JVM_DEBUG: ${REMOTE_JVM_DEBUG}"
+	  echo "JAVA_OPTS: ${JAVA_OPTS}"
+    if [[ "$REMOTE_JVM_DEBUG" == "true" ]]; then
+      echo "Remote JVM debug on port 5005"
+    fi
 		echo "Apache Ranger Usersync Service with pid ${pid} has started."
 	else
 		echo "Apache Ranger Usersync Service failed to start!"

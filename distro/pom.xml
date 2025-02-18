@@ -844,6 +844,12 @@
             <groupId>org.apache.ranger</groupId>
             <artifactId>ranger-kylin-plugin-shim</artifactId>
             <version>${project.version}</version>
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>org.springframework.security</groupId>-->
+<!--                    <artifactId>spring-security-web</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
             <scope>provided</scope>
         </dependency>
         <dependency>

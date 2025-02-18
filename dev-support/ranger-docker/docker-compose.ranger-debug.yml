@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  ranger:
+    environment:
+      - REMOTE_JVM_DEBUG=${REMOTE_JVM_DEBUG:-false}
+      - REMOTE_JVM_DEBUG_PORT_RANGER=${REMOTE_JVM_DEBUG_PORT_RANGER}
+    ports:
+      - "${REMOTE_JVM_DEBUG_PORT_RANGER}:5005"
+    volumes:
+      - /var/log/ranger:/var/log/ranger
